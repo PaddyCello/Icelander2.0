@@ -7,7 +7,7 @@
     "bulma": "^0.9.2",
     "eslint-plugin-react": "^7.18.3",
     "http-proxy-middleware": "^1.0.5",
-    "node-sass": "^4.13.1",
+    "node-sass": "4.14.1",
     "react": "^17.0.2",
     "react-bootstrap": "^1.5.2",
     "react-dom": "^17.0.2",
@@ -15,7 +15,8 @@
     "react-mapbox-gl": "^5.1.1",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
-    "react-star-rating": "^1.4.2"
+    "react-star-rating": "^1.4.2",
+    "rebuild": "^0.1.2"
   },
   "scripts": {
     "start": "react-scripts start",
