@@ -1,6 +1,6 @@
 import express from 'express'
 import { loginUser, registerUser } from '../controllers/auth.js'
-import { getAllPackages, getOnePackage } from '../controllers/packages.js'
+import { getAllPackages, getFilteredPackages, getOnePackage } from '../controllers/packages.js'
 import { addRatingToPlace, getAllPlaces, getOnePlace } from '../controllers/places.js'
 import { addSavedPlace, getUserProfile } from '../controllers/users.js'
 import { getAllDays } from '../controllers/days.js'
@@ -24,6 +24,9 @@ router.route('/places/:id/ratings')
 
 router.route('/packages')
   .get(getAllPackages)
+
+router.route('/packageseason')
+  .get(getFilteredPackages)
 
 router.route('/packages/:id')
   .get(getOnePackage)

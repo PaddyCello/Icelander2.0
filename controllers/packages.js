@@ -12,6 +12,22 @@ export const getAllPackages = async (_req, res) => {
   }
 }
 
+//! SEASON Filter
+export const getFilteredPackages = async (req, res) => {
+  try {
+    const season = req.query.season
+    console.log('SEASON >>>', season)
+    const packagesLibrary = await Package.find()
+    const seasonalPackages = packagesLibrary.filter(item => {
+      return item.season === season
+    })
+    return res.status(200).json(seasonalPackages)
+  } catch (err) {
+    console.log(err)
+    return res.status(404).json({ message: err.message })
+  }
+}
+
 //! INDIVIDUAL Place Route
 export const getOnePackage = async (req, res) => {
   try {
