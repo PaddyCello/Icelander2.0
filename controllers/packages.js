@@ -1,27 +1,32 @@
 import Package from '../models/package.js'
 
 //! INDEX Route
-export const getAllPackages = async (_req, res) => {
-  try {
-    const packagesLibrary = await Package.find()
-    console.log('PACKAGES LIBRARY >>>', packagesLibrary)
-    return res.status(200).json(packagesLibrary)
-  } catch (err) {
-    console.log(err)
-    return res.status(404).json({ message: err.message })
-  }
-}
+// export const getAllPackages = async (_req, res) => {
+//   try {
+//     const packagesLibrary = await Package.find()
+//     console.log('PACKAGES LIBRARY >>>', packagesLibrary)
+//     return res.status(200).json(packagesLibrary)
+//   } catch (err) {
+//     console.log(err)
+//     return res.status(404).json({ message: err.message })
+//   }
+// }
 
 //! SEASON Filter
-export const getFilteredPackages = async (req, res) => {
+export const getAllPackages = async (req, res) => {
   try {
     const season = req.query.season
     console.log('SEASON >>>', season)
-    const packagesLibrary = await Package.find()
-    const seasonalPackages = packagesLibrary.filter(item => {
-      return item.season === season
-    })
-    return res.status(200).json(seasonalPackages)
+    if (!season) {
+      const packages = await Package.find()
+      return res.status(200).json(packages)
+    } else {
+      const packagesLibrary = await Package.find()
+      const seasonalPackages = packagesLibrary.filter(item => {
+        return item.season === season
+      })
+      return res.status(200).json(seasonalPackages)
+    }
   } catch (err) {
     console.log(err)
     return res.status(404).json({ message: err.message })
