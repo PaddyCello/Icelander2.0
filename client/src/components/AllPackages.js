@@ -3,59 +3,31 @@ import axios from 'axios'
 import LargeTile from './LargeTile'
 import Navbar from '../Navbar'
 import Carousel from 'react-bootstrap/Carousel'
-// import ShowPage from './ShowPage'
-// import { Link } from 'react-router-dom'
-
-
 
 const AllPackages = () => {
 
-  // console.log(ShowPage)
+  const [packages, setPackages] = useState(null)
+  const options = ['Summer', 'Winter', 'All']
 
-  const [packages, setPackages] = useState([])
-  // console.log(setPackageData)
-
-  //! UNCOMMENT BELOW
-  const [toggle, setToggle] = useState(null)
-  console.log('toggle >>>', toggle)
-
-  const handleClick = (event) => {
-    console.log('CLICKED', event.target.value)
-    setToggle(event.target.value)
+  const handleClick = async (event) => {
+    const { data } = await axios.get(`/api/packages/?season=${event.target.value}`)
+    setPackages(data)
   }
 
   useEffect(() => {
     const getData = async () => {
       const { data } = await axios.get('/api/packages')
-      const summerPackages = data.filter(item => {
-        return (item.season === 'Summer')
-      })
-      const winterPackages = data.filter(item => {
-        return (item.season === 'Winter')
-      })
-      if (toggle === 'Summer') {
-        setPackages(summerPackages)
-      } else if (toggle === 'Winter') {
-        setPackages(winterPackages)
-      } else {
-        setPackages(data)
-      }
-      console.log('Summer packages', summerPackages)
-      console.log('Winter packages', winterPackages)
+      setPackages(data)
     }
     getData()
-  }, [toggle])
+  }, [])
 
-
-
-
-  if (packages.length < 1) return null
+  if (!packages) return null
   console.log('PACKAGES>>>>', packages)
 
   return (
     <>
       <div className="packages-shadow">
-
       </div>
       <div className="caption">
         <p className="p-caption">Explore Iceland</p>
@@ -93,31 +65,20 @@ const AllPackages = () => {
         <div className="scroll-filter" >
           <div className="button-bar">
             <div className="drop-downs">
-              {/* <div className="bootstrap-button">
-                <DropdownButton id="dropdown-basic-button" variant="light" title="Duration" className="bring-to-front">{' '}
-                  <Dropdown.Item href="#/packages/summer">7 Days</Dropdown.Item>
-                  <Dropdown.Item href="#/packages/winter">8 Days</Dropdown.Item>
-                  <Dropdown.Item href="#/packages/winter">10 Days</Dropdown.Item>
-                  <Dropdown.Item href="#/packages">All</Dropdown.Item>
-                </DropdownButton>
-              </div> */}
             </div>
           </div>
           <div className="filters">
-            <button className="filter-button" value="Summer" onClick={handleClick}>Summer</button>
-            <button className="filter-button" value="Winter" onClick={handleClick}>Winter</button>
-            <button className="filter-button" value="All" onClick={handleClick}>All</button>
+            {options.map(item => (
+              <button className="filter-button" key={item} value={item} onClick={handleClick}>{item}</button>
+            ))}
           </div>
           <ul className="packages-ul" id="no-scroll1">
             {packages.map(trip => (
-              // <Link to={`/packages/${trip._id}`} key={trip._id}>
               <LargeTile key={trip._id} {...trip} />
-              // </Link>
             ))}
           </ul>
         </div>
       </div>
-      {/* </div> */}
     </>
   )
 

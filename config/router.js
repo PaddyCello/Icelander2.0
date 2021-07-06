@@ -21,12 +21,8 @@ router.route('/places/:id')
 router.route('/places/:id/ratings')
   .post(secureRoute, addRatingToPlace)
 
-
 router.route('/packages')
   .get(getAllPackages)
-
-// router.route('/packageseason')
-//   .get(getFilteredPackages)
 
 router.route('/packages/:id')
   .get(getOnePackage)

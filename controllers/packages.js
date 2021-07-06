@@ -1,24 +1,13 @@
 import Package from '../models/package.js'
 
-//! INDEX Route
-// export const getAllPackages = async (_req, res) => {
-//   try {
-//     const packagesLibrary = await Package.find()
-//     console.log('PACKAGES LIBRARY >>>', packagesLibrary)
-//     return res.status(200).json(packagesLibrary)
-//   } catch (err) {
-//     console.log(err)
-//     return res.status(404).json({ message: err.message })
-//   }
-// }
-
 //! SEASON Filter
 export const getAllPackages = async (req, res) => {
   try {
     const season = req.query.season
     console.log('SEASON >>>', season)
-    if (!season) {
+    if (season === 'All' || !season) {
       const packages = await Package.find()
+      if (!packages) throw new Error()
       return res.status(200).json(packages)
     } else {
       const packagesLibrary = await Package.find()
