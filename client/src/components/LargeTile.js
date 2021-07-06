@@ -1,41 +1,37 @@
 import React from 'react'
-// import { useHistory } from 'react-router-dom'
 import { Link } from 'react-router-dom'
-// import ShowPage from './ShowPage'
 
 
-const LargeTile = (props) => {
-
+const LargeTile = ({ packageNumber, _id, image, name, duration, season, price, description }) => {
 
   return (
     <>
-      <Link to={`/packages/${props.packageNumber}`} style={{ textDecoration: 'none' }}>
-        <li className="packages-li" key={props._id}>
+      <Link to={`/packages/${packageNumber}`} style={{ textDecoration: 'none' }}>
+        <li className="packages-li" key={_id}>
           <div className="packages-li-container">
-            <img src={props.image} className="package-background" key={props._id} />
+            <img src={image} className="package-background" key={_id} />
             <div className="left">
               <div className="package-title">
-                {props.name}
+                {name}
               </div>
               <div className="right" >
                 <ul className="package-details-ul">
                   <li className="package-details">
-                    {props.duration} days
+                    {duration} days
                   </li>
                   <li className="package-details">
-                    {props.season}
+                    {season}
                   </li>
                   <li className="package-details">
-                    £{props.price}pp
+                    £{price}pp
                   </li>
                 </ul>
               </div>
             </div>
             <div className="description-tile">
               <div className="hover-area">
-                {/* <div className="hover-area" onClick={handleClick}> */}
                 <p className="tile-description">
-                  {props.description}
+                  {description}
                 </p>
               </div>
             </div>
