@@ -1,3 +1,4 @@
+//! Look into how to check query value against object key. Or, will I have to completely redesign schema?
 
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
@@ -82,10 +83,6 @@ const ShowPackageTile = () => {
       } else {
         setLocations(dayOne)
       }
-      // console.log('packageData', packageData)
-      // setLocations(packageData)
-      // console.log('dayOne', dayOne)
-      // console.log('dayTwo', dayTwo)
     }
     getData()
   }, [day])
@@ -96,12 +93,9 @@ const ShowPackageTile = () => {
       const durationData = data[id - 1].duration
       setDuration(durationData)
     }
-    // console.log('packageData', packageData)
 
     getData()
   }, [duration])
-
-  console.log('duration', duration)
 
   if (!locations) return null
   if (!duration) return null

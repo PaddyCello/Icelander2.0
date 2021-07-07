@@ -1,3 +1,5 @@
+//! Link on Line 101 has no destination in BrowserRouter. Change to a state change to show affirmative message?
+
 import React, { useState } from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
@@ -18,9 +20,6 @@ const Register = () => {
   })
 
   const handleChange = event => {
-    //? set state when user types
-    /// console.log(event.target.value)
-    /// console.log(formData['username'])
     const newFormData = { ...formData, [event.target.name]: event.target.value }
     setFormData(newFormData)
   }

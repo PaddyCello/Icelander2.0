@@ -60,9 +60,7 @@ const Login = () => {
                 </div>
               </div>
               <div className="field">
-                {/* <Link to={`/${formData.username}`}> */}
                 <button type="submit" className="button register-button">Log Me In!</button>
-                {/* </Link> */}
               </div>
             </form>
           </div>

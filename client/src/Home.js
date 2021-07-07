@@ -9,13 +9,9 @@ const Home = () => {
 
   const handleClick = (event) => {
     console.log(event)
-    history.push('/packages')
+    history.push(`/${event.target.value}`)
   }
-  const handleClickMap = (event) => {
-    console.log(event)
-    history.push('/map')
-  }
-
+ 
   return (
     <>
       <div className="homepage">
@@ -23,8 +19,8 @@ const Home = () => {
           <img className="logo-homepage" src='/assets/logo_white_large.jpeg' />
           <p className="homepage-subtitle">Get behind the wheel and explore.</p>
           <div className="homepage-buttons">
-            <Button className="button" onClick={handleClick}>EXPLORE ALL PACKAGES</Button>{' '}
-            <Button className="button" onClick={handleClickMap}>CREATE CUSTOM TRIP</Button>{' '}
+            <Button className="button" value="packages" onClick={handleClick}>EXPLORE ALL PACKAGES</Button>{' '}
+            <Button className="button" value="map" onClick={handleClick}>CREATE CUSTOM TRIP</Button>{' '}
           </div>
         </div>
       </div>
