@@ -1,3 +1,5 @@
+//? Do attributes for input fields need to be attached to Form Control in order to work?
+
 import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import axios from 'axios'
