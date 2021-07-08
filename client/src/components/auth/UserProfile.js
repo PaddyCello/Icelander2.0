@@ -1,3 +1,5 @@
+//! Look into HTTPOnly cookies as a more secure alternative to localStorage
+
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
@@ -23,14 +25,7 @@ const UserProfile = () => {
 
   if (!userData) return null
   console.log(userData)
-  // useEffect(() => {
-  //   const getPlaces = async() => {
-  //     const placesResponse = await axios.get('/api/places')
-  //     console.log(placesResponse)
-  //   }
-  //   getPlaces()
-  // }, [])
-
+  
   return (
     <>
       <Link to='/profile/getmyplaces'>

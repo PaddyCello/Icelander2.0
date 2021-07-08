@@ -1,7 +1,5 @@
 import React, { useState } from 'react'
-import Card from 'react-bootstrap/Card'
-import Tabs from 'react-bootstrap/Tabs'
-import Tab from 'react-bootstrap/Tab'
+import { Card, Tabs, Tab } from 'react-bootstrap'
 import axios from 'axios'
 import { userIsAuthenticated } from '../auth/helpers/auth'
 import StarRating from '../Ratings'

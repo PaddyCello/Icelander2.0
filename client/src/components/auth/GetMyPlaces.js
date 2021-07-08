@@ -1,13 +1,21 @@
+//! Can filter myPlaces server-side instead of client-side; also check if back end has secure route
+
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import Carousel from 'react-bootstrap/Carousel'
 
 const GetMyPlaces = (props) => {
   const [allMyPlaces, setAllMyPlaces] = useState(null)
+  console.log('PROPS >>>', props.savedPlaces)
 
   useEffect(() => {
     const getPlaces = async () => {
-      const { data } = await axios.get('/api/profile/getmyplaces')
+      const token = window.localStorage.getItem('token')
+      const { data } = await axios.get('/api/profile/getmyplaces', {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      })
       const myPlaces = data.filter(item => {
         return props.savedPlaces.includes(item._id)
       })
@@ -61,11 +69,9 @@ const GetMyPlaces = (props) => {
                   <h1 className="saved-title">{place.nameOfDestination}</h1>
                   <img
                     className="saved-img"
-                    // id="carousel-image"
                     src={place.image}
                   />
                   <p className="hidden-lat">Average Rating: {place.avgRating}</p>
-                  {/* <p className="hidden-lat">{place.description}</p> */}
                 </li>
               )
             })}
