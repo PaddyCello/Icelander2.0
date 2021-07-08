@@ -1,5 +1,3 @@
-//? Do attributes for input fields need to be attached to Form Control in order to work?
-
 import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import axios from 'axios'
@@ -44,7 +42,7 @@ const Login = () => {
                     placeholder="Email"
                     name="email"
                     value={formData.email}
-                    onChange={(event) => handleChange(event)}
+                    onChange={handleChange}
                   />
                 </div>
               </div>
@@ -57,7 +55,7 @@ const Login = () => {
                     placeholder="Password"
                     name="password"
                     value={formData.password}
-                    onChange={(event) => handleChange(event)}
+                    onChange={handleChange}
                   />
                 </div>
               </div>
