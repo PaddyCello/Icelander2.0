@@ -1,7 +1,7 @@
 import express from 'express'
 import { loginUser, registerUser } from '../controllers/auth.js'
 import { getAllPackages, getOnePackage } from '../controllers/packages.js'
-import { addRatingToPlace, getAllPlaces, getOnePlace } from '../controllers/places.js'
+import { addRatingToPlace, getAllPlaces, getAllMyPlaces, getOnePlace } from '../controllers/places.js'
 import { addSavedPlace, getUserProfile } from '../controllers/users.js'
 import { getAllDays } from '../controllers/days.js'
 import { secureRoute } from './secureRoute.js'
@@ -40,7 +40,7 @@ router.route('/profile')
   .get(secureRoute, getUserProfile)
 
 router.route('/profile/getmyplaces')
-  .get(secureRoute, getAllPlaces)
+  .get(secureRoute, getAllMyPlaces)
   
 
 export default router

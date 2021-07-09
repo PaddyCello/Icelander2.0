@@ -1,4 +1,4 @@
-//! Can filter myPlaces server-side instead of client-side; also check if back end has secure route
+//! Need to retstructure this and UserProfile so that UserProfile displays independently of GetMyPlaces
 
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
@@ -6,7 +6,6 @@ import Carousel from 'react-bootstrap/Carousel'
 
 const GetMyPlaces = (props) => {
   const [allMyPlaces, setAllMyPlaces] = useState(null)
-  console.log('PROPS >>>', props.savedPlaces)
 
   useEffect(() => {
     const getPlaces = async () => {
@@ -16,10 +15,7 @@ const GetMyPlaces = (props) => {
           Authorization: `Bearer ${token}`
         }
       })
-      const myPlaces = data.filter(item => {
-        return props.savedPlaces.includes(item._id)
-      })
-      setAllMyPlaces(myPlaces)
+      setAllMyPlaces(data)
     }
     getPlaces()
   }, [])

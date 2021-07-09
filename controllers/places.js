@@ -1,10 +1,10 @@
 import Place from '../models/place.js'
+import User from '../models/user.js'
 
 //! INDEX Route
 export const getAllPlaces = async (_req, res) => {
   try {
     const placesLibrary = await Place.find()
-    // console.log('PLACES LIBRARY >>>', placesLibrary)
     return res.status(200).json(placesLibrary)
   } catch (err) {
     console.log(err)
@@ -13,21 +13,19 @@ export const getAllPlaces = async (_req, res) => {
 }
 //? Having found the rogue console log, I can attempt this again
 // //! SAVED PLACES Route
-// export const getAllMyPlaces = async (req, res) => {
-//   const placeIds = req.data
-//   console.log('SAVED PLACES >>>', req.data.placeIds)
-//   try {
-//     const placesLibrary = await Place.find()
-//     console.log('PLACES LIBRARY >>>', placesLibrary)
-//     const userPlaces = placesLibrary.filter(item => {
-//       return placeIds.includes(item._id)
-//     })
-//     return res.status(200).json(userPlaces)
-//   } catch (err) {
-//     console.log(err)
-//     return res.status(404).json({ message: err.message })
-//   }
-// }
+export const getAllMyPlaces = async (req, res) => {
+  try {
+    const user = await User.findById(req.currentUser._id)
+    const placesLibrary = await Place.find()
+    const userPlaces = placesLibrary.filter(item => {
+      return user.savedPlaces.includes(item._id)
+    })
+    return res.status(200).json(userPlaces)
+  } catch (err) {
+    console.log(err)
+    return res.status(404).json({ message: err.message })
+  }
+}
 
 //! INDIVIDUAL Place Route
 export const getOnePlace = async (req, res) => {
