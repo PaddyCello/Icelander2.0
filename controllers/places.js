@@ -11,7 +11,6 @@ export const getAllPlaces = async (_req, res) => {
     return res.status(404).json({ message: err.message })
   }
 }
-//? Having found the rogue console log, I can attempt this again
 // //! SAVED PLACES Route
 export const getAllMyPlaces = async (req, res) => {
   try {

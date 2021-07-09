@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
 import GetMyPlaces from './GetMyPlaces'
+import { Carousel } from 'react-bootstrap'
 
 const UserProfile = () => {
 
@@ -28,9 +29,47 @@ const UserProfile = () => {
   
   return (
     <>
-      <Link to='/profile/getmyplaces'>
-        <GetMyPlaces {...userData} />
-      </Link>
+      <div>
+        <div className="packages-shadow">
+
+        </div>
+        <div className="saved-overall-container">
+          <Carousel id="carousel-container" className="saved-carousel">
+            <Carousel.Item>
+              <img
+                className="d-block w-100"
+                id="carousel-image"
+                src="/assets/jonatan-pie-iokiwAq05UU-unsplash (1).jpg"
+                alt="First slide"
+              />
+            </Carousel.Item>
+            <Carousel.Item>
+              <img
+                className="d-block w-100"
+                id="carousel-image"
+                src="/assets/landon-arnold-PMdiRXbAbhY-unsplash.jpg"
+                alt="Second slide"
+              />
+            </Carousel.Item>
+            <Carousel.Item>
+              <img
+                className="d-block w-100"
+                id="carousel-image"
+                src="/assets/rory-hennessey-_NHfYFX0L2E-unsplash.jpg"
+                alt="Third slide"
+              />
+            </Carousel.Item>
+          </Carousel>
+        </div>
+        <div className="saved-container">
+          <Link to='/profile/getmyplaces'>
+            <GetMyPlaces {...userData} />
+          </Link>
+          <div className="caption">
+            <p className="welcome-caption">Welcome Back, {userData.username}!</p>
+          </div>
+        </div>
+      </div>
     </>
   )
 }

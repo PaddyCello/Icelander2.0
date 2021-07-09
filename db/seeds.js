@@ -25,12 +25,10 @@ const seedDatabase = async () => {
 
     //! Add places to db
     const places = await Place.create(placeData)
-    // console.log('PLACES', places)
     console.log(`🌱 DB seeded with ${places.length} places`)
 
     //! Add packages to db
     const packages = await Package.create(packageData)
-    // console.log('PACKAGES', packages)
     console.log(`🌱 DB seeded with ${packages.length} packages`)
 
     //! Add days to the DB
