@@ -2,9 +2,16 @@ import Place from '../models/place.js'
 import User from '../models/user.js'
 
 //! INDEX Route
-export const getAllPlaces = async (_req, res) => {
+export const getAllPlaces = async (req, res) => {
+  const id = req.query.id
   try {
     const placesLibrary = await Place.find()
+    if (id) {
+      const filteredPlaces = placesLibrary.filter(item => {
+        return item.packages.includes(parseInt(id))
+      })
+      return res.status(200).json(filteredPlaces)
+    }
     return res.status(200).json(placesLibrary)
   } catch (err) {
     console.log(err)

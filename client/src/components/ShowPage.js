@@ -1,5 +1,3 @@
-//! Change API request to include query string
-
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import ReactMapGL, { FlyToInterpolator, Marker } from 'react-map-gl'
@@ -24,11 +22,8 @@ const ShowPage = () => {
 
   useEffect(() => {
     const getData = async () => {
-      const { data } = await axios.get('/api/places')
-      const packageData = data.filter(item => {
-        return item.packages.includes(parseInt(id))
-      })
-      setLocations(packageData)
+      const { data } = await axios.get(`/api/places/?id=${id}`)
+      setLocations(data)
     }
     getData()
   }, [])
