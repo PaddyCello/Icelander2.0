@@ -17,13 +17,8 @@ const ShowPackageTile = () => {
 
 
   const handleClick = (event) => {
-    console.log('CLICKED', event.target.value)
     setDay(event.target.value)
   }
-  console.log('day', day)
-  console.log('locations', locations)
-  console.log('ID', id)
-
 
   useEffect(() => {
     const getData = async () => {
@@ -97,9 +92,7 @@ const ShowPackageTile = () => {
     getData()
   }, [duration])
 
-  if (!locations) return null
-  if (!duration) return null
-
+  if (!locations || !duration) return null
 
   return (
     <>
