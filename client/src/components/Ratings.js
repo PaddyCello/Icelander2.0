@@ -35,7 +35,6 @@ const StarRating = ({ value, ..._id }) => {
   return (
     <div
       onMouseOut={() => hoverOver(null)}
-      // onClick={e => setRating(e.target.getAttribute('data-star-id') || rating)}
       onClick={handleClick}
       onMouseOver={hoverOver}
     >

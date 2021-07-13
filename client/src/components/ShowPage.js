@@ -1,15 +1,15 @@
+//! Change API request to include query string
+
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import ReactMapGL, { FlyToInterpolator, Marker } from 'react-map-gl'
 import ShowPackageTile from './ShowPackageTile'
-// import AllPackages from './AllPackages.js'
 import { useParams } from 'react-router-dom'
 import Navbar from '../Navbar'
 
 
 const ShowPage = () => {
-  // console.log(AllPackages)
-  // console.log('props', props)
+
   const { id } = useParams()
 
   const [viewPort, setViewPort] = useState({
@@ -25,17 +25,13 @@ const ShowPage = () => {
   useEffect(() => {
     const getData = async () => {
       const { data } = await axios.get('/api/places')
-      // console.log('data', data)
       const packageData = data.filter(item => {
         return item.packages.includes(parseInt(id))
       })
-      // console.log('packageData', packageData)
       setLocations(packageData)
     }
     getData()
   }, [])
-
-  // console.log(props.name)
 
   if (locations.length < 1) return null
 
@@ -47,10 +43,8 @@ const ShowPage = () => {
       zoom: 8,
       transitionDuration: 5000,
       transitionInterpolator: new FlyToInterpolator()
-      // transitionEasing: d3.easeCubic
     })
   }
-  // console.log('locations', locations)
 
   return (
     <>
@@ -79,9 +73,6 @@ const ShowPage = () => {
         </div>
       </div>
     </>
-
-
-
   )
 
 }

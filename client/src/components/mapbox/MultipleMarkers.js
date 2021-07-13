@@ -14,12 +14,10 @@ const MultipleMarkers = () => {
   })
 
   const [placeData, setPlaceData] = useState(null)
-  console.log(setPlaceData)
 
   const [popup, setPopup] = useState(null)
 
   useEffect(() => {
-    console.log(placeData)
     const getData = async () => {
       const response = await axios.get('/api/places')
       setPlaceData(response.data)

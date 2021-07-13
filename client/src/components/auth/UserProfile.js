@@ -64,7 +64,7 @@ const UserProfile = () => {
         </div>
         <div className="saved-container">
           <Link to='/profile/getmyplaces'>
-            <GetMyPlaces {...userData} />
+            <GetMyPlaces />
           </Link>
           <div className="caption">
             <p className="welcome-caption">Welcome Back, {userData.username}!</p>

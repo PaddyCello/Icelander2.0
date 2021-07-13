@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import axios from 'axios'
-// import { Link } from 'react-router-dom'
 
 const Login = () => {
 
@@ -14,12 +13,10 @@ const Login = () => {
   const handleChange = event => {
     const newFormData = { ...formData, [event.target.name]: event.target.value }
     setFormData(newFormData)
-    console.log(formData)
   }
 
   const handleSubmit = async event => {
     event.preventDefault()
-    console.log('TOKEN>>>>')
     const response = await axios.post('api/login', formData)
     window.localStorage.setItem('token', response.data.token)
 

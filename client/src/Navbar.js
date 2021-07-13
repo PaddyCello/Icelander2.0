@@ -1,10 +1,11 @@
+//! Change text colour to work against any background
+//? Hamburger opening needs to not affect layout the way it does currently
+
 import Navbar from 'react-bootstrap/Navbar'
 import Nav from 'react-bootstrap/Nav'
 import React, { useEffect } from 'react'
 import { useHistory, useLocation } from 'react-router-dom'
 import { userIsAuthenticated } from './components/auth/helpers/auth'
-
-//! Add Login form - collapses
 
 const MyNavbar = () => {
   const history = useHistory()
@@ -15,7 +16,6 @@ const MyNavbar = () => {
   }
   const location = useLocation()
   useEffect(() => {
-    // re-render Navbar when url changes
   }, [location.pathname])
 
 
@@ -30,7 +30,6 @@ const MyNavbar = () => {
           {userIsAuthenticated() &&
             <>
               <Nav.Link href="/profile">Profile</Nav.Link>
-              {/* <button type="button" onClick={handleLogout}>Log Out</button> */}
               <Nav.Link onClick={handleLogout}>Log Out</Nav.Link>
             </>
           }
