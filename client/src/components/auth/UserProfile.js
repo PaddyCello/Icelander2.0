@@ -1,5 +1,5 @@
 //! Look into HTTPOnly cookies as a more secure alternative to localStorage
-//? No longer need to pass props into link to GetMyPlaces; also, probably just needs to be component instead of Link
+//? GetMyPlaces probably just needs to be component instead of Link - but need to find working solution
 
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'

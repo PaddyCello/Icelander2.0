@@ -23,7 +23,6 @@ const AllPackages = () => {
   }, [])
 
   if (!packages) return null
-  console.log('PACKAGES>>>>', packages)
 
   return (
     <>

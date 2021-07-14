@@ -1,3 +1,5 @@
+//! Need to z-index popup further forward than Navbar
+
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import ReactMapGL, { Marker, Popup } from 'react-map-gl'
@@ -24,7 +26,6 @@ const MultipleMarkers = () => {
     }
     getData()
   }, [])
-  console.log(popup)
  
   if (!placeData) return null
   return (

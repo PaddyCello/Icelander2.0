@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import axios from 'axios'
 
 const Star = ({ marked, starId }) => {
@@ -10,8 +10,8 @@ const Star = ({ marked, starId }) => {
 }
 
 const StarRating = ({ value, ..._id }) => {
-  const [rating, setRating] = React.useState(parseInt(value) || 0)
-  const [selection, setSelection] = React.useState(0)
+  const [rating, setRating] = useState(parseInt(value) || 0)
+  const [selection, setSelection] = useState(0)
 
   const hoverOver = event => {
     let val = 0
@@ -21,9 +21,7 @@ const StarRating = ({ value, ..._id }) => {
   }
 
   const handleClick = async (event) => {
-    console.log(String(_id._id))
     const choice = parseInt(event.target.getAttribute('data-star-id'))
-    console.log(choice)
     const token = window.localStorage.getItem('token')
     const response = await axios.post(`/api/places/${_id._id}/ratings`, { rating: choice }, {
       headers: {
