@@ -636,7 +636,7 @@ h6 {
 
 .map-caption {
   position: absolute;
-  color: white;
+  color: #03a0a0a9;
   text-align: center;
   z-index: 5;
   font-size: 4vh;
@@ -644,4 +644,11 @@ h6 {
   width: 15vw;
   margin-top: 74vh;
   margin-left: 2vw;
+}
+
+.nav-link {
+  color: #ca03ca !important;
+}
+.navbar-toggler {
+  border: 1px solid #ca03ca !important;
 }

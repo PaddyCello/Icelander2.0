@@ -18,7 +18,7 @@ const ShowPage = () => {
     pitch: 0
   })
 
-  const [locations, setLocations] = useState([])
+  const [locations, setLocations] = useState(null)
 
   useEffect(() => {
     const getData = async () => {
@@ -28,7 +28,7 @@ const ShowPage = () => {
     getData()
   }, [])
 
-  if (locations.length < 1) return null
+  if (!locations) return null
 
   const handleFlyClick = (event) => {
     setViewPort({

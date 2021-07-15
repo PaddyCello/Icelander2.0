@@ -32,7 +32,6 @@ const UserProfile = () => {
     <>
       <div>
         <div className="packages-shadow">
-
         </div>
         <div className="saved-overall-container">
           <Carousel id="carousel-container" className="saved-carousel">

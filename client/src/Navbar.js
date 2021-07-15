@@ -20,7 +20,9 @@ const MyNavbar = () => {
 
 
   return (
-    <Navbar expand="lg" className="bring-to-front">
+    <Navbar expand="lg" 
+      className="bring-to-front"
+    >
       <Navbar.Brand href="/"><img className="logo" src='/assets/logo_white_large.jpeg' /></Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
