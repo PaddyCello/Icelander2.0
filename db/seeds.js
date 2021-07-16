@@ -6,8 +6,6 @@ import User from '../models/user.js'
 import userData from './data/users.js'
 import packageData from './data/packages.js'
 import Package from '../models/package.js'
-import dayData from './data/days.js'
-import Day from '../models/day.js'
 
 const seedDatabase = async () => {
   try {
@@ -30,11 +28,6 @@ const seedDatabase = async () => {
     //! Add packages to db
     const packages = await Package.create(packageData)
     console.log(`🌱 DB seeded with ${packages.length} packages`)
-
-    //! Add days to the DB
-
-    const days = await Day.create(dayData)
-    console.log(`🌱 DB seeded with ${days.length} days`)
 
     //! Close connection
     await mongoose.connection.close()
