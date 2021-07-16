@@ -1,4 +1,3 @@
-//! Change text colour to work against any background
 //? Hamburger opening needs to not affect layout the way it does currently
 
 import Navbar from 'react-bootstrap/Navbar'

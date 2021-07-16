@@ -3,7 +3,6 @@ import { loginUser, registerUser } from '../controllers/auth.js'
 import { getAllPackages, getOnePackage } from '../controllers/packages.js'
 import { addRatingToPlace, getAllPlaces, getAllMyPlaces, getOnePlace } from '../controllers/places.js'
 import { addSavedPlace, getUserProfile } from '../controllers/users.js'
-import { getAllDays } from '../controllers/days.js'
 import { secureRoute } from './secureRoute.js'
 
 
@@ -26,9 +25,6 @@ router.route('/packages')
 
 router.route('/packages/:id')
   .get(getOnePackage)
-
-router.route('/days')  
-  .get(getAllDays)
 
 router.route('/register')
   .post(registerUser)
