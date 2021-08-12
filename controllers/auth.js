@@ -26,6 +26,7 @@ export const loginUser = async (req, res) => {
     }
 
     const token = jwt.sign({ sub: userToLogin._id }, secret, { expiresIn: '7 days' })
+    res.cookie('token', token, { httpOnly: true })
     return res.status(200).json({ message: `Welcome back ${userToLogin.username}`, token })
   } catch (err) {
     console.log(err)

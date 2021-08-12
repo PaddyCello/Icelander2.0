@@ -2,6 +2,7 @@ import express from 'express'
 import mongoose from 'mongoose'
 import { port, dbURI } from './config/environment.js'
 import router from './config/router.js'
+import cookieParser from 'cookie-parser'
 
 const app = express()
 
@@ -13,7 +14,7 @@ const startServer = async () => {
 
     //! Body parser
     app.use(express.json())
-
+    app.use(cookieParser())
     //! Middleware
     app.use((req, _res, next) => {
       console.log(`🚨 Incoming request: ${req.method} - ${req.url}`)
